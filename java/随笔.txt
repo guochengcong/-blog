@@ -1,0 +1,10 @@
+关于封装分层。
+通过某工具类.getdatabase类型，类型在配置文件中配置，由spring参数获取。
+
+
+public create ( idaos){
+string tablename= idaos.getTablename;
+Connection conn= dataSource.getConnection();
+
+
+}

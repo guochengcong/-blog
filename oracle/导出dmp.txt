@@ -1,0 +1,4 @@
+--导出dmp
+exp username/pwd owner=username file=exp_xxx.dmp log=exp_xxx.log buffer=6000000 
+--只导出表结构
+rows=n

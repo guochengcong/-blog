@@ -1,0 +1,26 @@
+--修改原字段名  
+ALTER TABLE 表名 RENAME COLUMN 字段名 TO 字段名1;
+
+--添加一个和原字段同名的字段  
+ALTER TABLE 表名 ADD 字段名 VARCHAR2(30);  
+   
+--将原来的数据更新到新字段中,这是要注意，一定要显示进行数据类型转换（不同于MSSQL）  
+UPDATE 表名 SET 字段名 = CAST(字段名1 AS VARCHAR2(30));
+
+--删除原来的备份字段  
+ALTER TABLE 表名 DROP COLUMN 字段名1;
+
+
+--修改原字段名  
+ALTER TABLE t5_prod_nav RENAME COLUMN nav TO nav_trmp;
+
+--添加一个和原字段同名的字段  
+ALTER TABLE t5_prod_nav ADD nav  number(11,8);  
+   
+--将原来的数据更新到新字段中,这是要注意，一定要显示进行数据类型转换（不同于MSSQL）  
+UPDATE t5_prod_nav SET nav = CAST(nav_trmp AS number(11,8));
+
+--删除原来的备份字段  
+ALTER TABLE t5_prod_nav DROP COLUMN nav_temp;
+
+select * from t5_prod_nav

@@ -1,0 +1,5 @@
+systemctl stop firewalld # 临时关闭防火墙
+systemctl disable firewalld # 禁止开机启动
+
+
+网关 192.168.159.2

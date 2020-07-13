@@ -1,0 +1,21 @@
+CREATE SEQUENCE 表明_sequence
+
+INCREMENT BY 1 -- 每次加几个
+
+START WITH 1 -- 从1开始计数
+
+NOMAXVALUE -- 不设置最大值
+
+NOCYCLE -- 一直累加，不循环
+
+NOCACHE -- 不建缓冲区
+
+
+再创建一个触发器：
+
+CREATE OR REPLACE TRIGGER example_t
+BEFORE INSERT ON example
+FOR EACH ROW
+BEGIN
+SELECT example_sequence.nextval INTO :new.id FROM dual; 
+END;

@@ -1,0 +1,67 @@
+重要语法
+
+SelectNodes("item")
+
+从当前节点的儿子节点中选择名称为 item 的节点。
+
+SelectNodes("/item")
+
+从根节点的儿子节点中选择名称为 item 的节点。
+
+SelectNodes("//item")
+
+从任意位置的节点上选择名称为 item 的节点。要重点突出这个任意位置，它不受当前节点的影响，也就是说假如当前节点是在第 100 层（有点夸张），也可以选择第一层的名称为 item 的节点。
+
+SelectNodes(".")
+
+选择当前节点。
+
+SelectNodes("..")
+
+选择当前节点的父节点。
+
+SelectNodes("//item[@name]")
+
+在 SelectNodes("//item") 的基础上，增加了一个限制，就是要求拥有 name 属性。
+
+SelectNodes("//item[@name='111']")
+
+在 SelectNodes("//item[@name]") 的基础上，增加了一个限制，就是要求 name 属性值为 111。注意语法中有引号；如果没有引号，则表示是数字类型，对于数字类型可以使用大于号、小于号等，比如：SelectNodes("//item[@v>333]")。
+
+SelectNodes("//item[1]")
+
+选择第一个 item，注意是第一个，不是第二个。
+
+还有这里是指亲兄弟间的第一个 item，也就是说：父级若有三个 item，则选择第一个；若父级第二个 item 的有两个名称同样为 item 的儿子，则第一个儿子会被选择出来；若父级第三个 item 的也有两个名称同样为 item 的儿子，则第一个儿子也会被选择出来……
+
+SelectNodes("//item[last()-1]")
+
+倒数第二个节点，同样是指亲兄弟间的倒数第二个。
+
+SelectNodes("//item[position()<=2]")
+
+位置为第一和第二的节点（第一个节点的 position() 为 1），同样是指亲兄弟间的位置。
+
+SelectNodes("//@name")
+
+SelectNodes("/root/item/@name") 取 item 的 name 属性
+
+选择 name 属性，注意这下选择的是属性，而不是节点了。用 Value 属性获取属性集合的属性值。
+
+SelectNodes("/root/item")
+
+根节点 root 下的 item 儿子节点。
+
+SelectNodes("/root//item")
+
+根节点 root 下的不管是儿子、孙子、重孙子……，只要是名称为 item 的统统选取出来。
+
+通配符
+
+可用 * 表示任意节点名称，比如 SelectNodes("/channel/*/item")；
+用 @* 表示任意属性；
+用 node() 表示任意类型的节点；
+用 text() 表示文本类型的节点，实际上也就是表示取文本节点（元素节点下面是文本节点，文本节点下面才是文字）。
+运算符
+
+| 表示或。SelectNodes("//item|//channel")，选择 item 或 channel 节点。
